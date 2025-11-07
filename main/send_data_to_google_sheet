@@ -21,7 +21,7 @@ byte bufferLen = 18;
 byte readBlockData[18];
 
 String data2;
-const String data1 = "https://script.google.com/macros/s/AKfycbyXFWxBztKbCtWKxXdUCgqCpHmg8ei2fz8xbp9hNZlgTL0yx9vm9AFrETMDqKl1DwhS/exec?name=";
+const String data1 = "https://script.google.com/macros/s/AKfycbzyZMO34O2hk2UK28iFUxQOvS4qnIyVYa_GkGiF2F25K8avDh58h7HizEVlDLCIPFLo/exec?name=";
 
 void setup() {
   Serial.begin(9600);
@@ -53,15 +53,16 @@ void loop() {
   }
   uidString.toUpperCase();
 
-  // Map UIDs to names
-  if (uidString == "5C150860") uidString = "Atharva Latkar"; // Adding Student 1
-  if (uidString == "A1B2C3D4") uidString = "Friend Name"; // Adding Student 2
+  // 🟢 Map UIDs to names
+  if (uidString == "5C150860") uidString = "Atharva Latkar";
+  if (uidString == "C3C15A31") uidString = "Bhushan Kadu";
+  if (uidString == "8400BB03") uidString = "Prajwal Ingole"; // add your friend's UID
 
   Serial.print("UID: ");
   Serial.println(uidString);
   Serial.println("Sending data to Google Sheet...");
 
-  // Encode name properly
+  // 🧩 Encode name properly
   String encodedName = uidString;
   encodedName.trim();
   encodedName.replace(" ", "%20");
@@ -69,7 +70,7 @@ void loop() {
   data2 = data1 + encodedName;
   Serial.println(data2);
 
-  // Buzzer feedback
+  // 🔔 Buzzer feedback
   digitalWrite(BUZZER, HIGH); delay(200);
   digitalWrite(BUZZER, LOW);  delay(200);
   digitalWrite(BUZZER, HIGH); delay(200);
